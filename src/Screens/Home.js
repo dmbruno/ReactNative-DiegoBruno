@@ -8,12 +8,11 @@ import Search from '../Components/Search'
 const Home = ({selectedCategoryState}) => {
 
     return (
-        <View>
+        <>
             <Header title="Menu Grizzly" />
             
             <Categories selectedCategoryState={selectedCategoryState}/>
-            
-        </View>
+        </>
     )
 }
 

@@ -6,7 +6,7 @@ import ProductCategory from '../Components/ProductCategory'
 import Search from '../Components/Search'
 
 
-const ProductsByCategory = ({ categorySelected }) => {
+const ProductsByCategory = ({ categorySelected, selectedProductId }) => {
 
   const [productsFiltered, setProductsFiltered] = useState([])
   const [keyword, setKeyword] = useState("")
@@ -31,7 +31,7 @@ const ProductsByCategory = ({ categorySelected }) => {
       <FlatList
         data={productsFiltered}
         keyExtractor={item => item.id}
-        renderItem={({ item }) => <ProductCategory item={item} />}
+        renderItem={({ item }) => <ProductCategory selectedProductId={selectedProductId} item={item} />}
       />
     </>
   )

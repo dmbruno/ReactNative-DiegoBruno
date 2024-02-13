@@ -1,13 +1,13 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, Pressable } from 'react-native'
 import colors from '../utils/Global/Colors'
 
 
-const ProductCategory = ({item}) => {
+const ProductCategory = ({item, selectedProductId}) => {
     return (
-        <View style={styles.container}>
+        <Pressable onPress={()=>selectedProductId(item.id)} style={styles.container}>
             <Image style={styles.image} source={{uri:item.thumbnail}} resizeMode='stretch'/>
             <Text style={styles.text}>{item.title}</Text>
-        </View>
+        </Pressable>
     )
 }
 
