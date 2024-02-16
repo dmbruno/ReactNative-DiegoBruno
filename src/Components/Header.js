@@ -3,7 +3,10 @@ import colors from "../utils/Global/Colors"
 import Fonts from '../utils/Global/fonts'
 import {Ionicons} from "@expo/vector-icons"
 
-const Header = ({title, navigation}) => {
+const Header = ({ title, navigation}) => {
+
+    
+
     return (
         <View style={styles.container}>
             {navigation.canGoBack() &&

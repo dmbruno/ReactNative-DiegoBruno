@@ -9,6 +9,8 @@ import Home from '../../Screens/Home';
 const Stack = createNativeStackNavigator()
 
 const MainNavigator = () => {
+
+
     return (
         <>
             <NavigationContainer>
@@ -18,6 +20,7 @@ const MainNavigator = () => {
                         return {
                             header: () => {
                                 return <Header
+
                                     navigation={navigation}
                                     title={route.name === "Home" ? "Menu Grizzly" :
                                         route.name === "ProductsByCategory" ? route.params.categorySelected :

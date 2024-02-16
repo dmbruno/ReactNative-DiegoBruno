@@ -1,7 +1,6 @@
 import { StyleSheet, Text, View, Image, Pressable } from 'react-native'
 import products from "../utils/data/products.json"
 import { useEffect, useState } from 'react';
-import Header from "../Components/Header"
 import colors from "../utils/Global/Colors"
 import Fonts from '../utils/Global/fonts';
 

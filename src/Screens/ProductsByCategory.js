@@ -1,5 +1,4 @@
-import { FlatList, View, Text } from 'react-native'
-import Header from '../Components/Header'
+import { FlatList } from 'react-native'
 import products from "../utils/data/products.json"
 import { useEffect, useState } from 'react'
 import ProductCategory from '../Components/ProductCategory'
