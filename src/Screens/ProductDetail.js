@@ -7,7 +7,9 @@ import Fonts from '../utils/Global/fonts';
 
 
 
-const ProductDetail = ({ productId, portrait }) => {
+const ProductDetail = ({ portrait, route }) => {
+    const {productId} = route.params
+
     const [product, setProduct] = useState({})
 
 
@@ -19,7 +21,7 @@ const ProductDetail = ({ productId, portrait }) => {
 
     return (
         <View style={styles.container}>
-            <Header title="Detalle de producto" />
+            
             <View style={[styles.content, !portrait && { flexDirection: "row", gap:10 }]}>
                 <Image
                     style={[styles.image, !portrait && { height: 180, width: "50%" }]}
@@ -32,7 +34,6 @@ const ProductDetail = ({ productId, portrait }) => {
                         <Text>{product.description}</Text>
                     </View>
                     <View style={[styles.containerText2,!portrait&&{width:"60%"}]}>
-
                         <Text style={styles.price}>$ {product.price}</Text>
                         <Pressable>
                             <Text style={styles.buyNow}>Buy Now</Text>
@@ -54,25 +55,32 @@ const styles = StyleSheet.create({
     },
     image: {
         width: "100%",
-        height: 300,
+        height: "100%",
+        
+        
 
     },
     containerText: {
-        gap: 25,
+        gap:5,
         paddingHorizontal: 5,
-        paddingVertical: 25
+        paddingVertical: 25,
+        bottom:15
     },
     containerText2: {
+        gap:20,
         flexDirection: "row",
-        justifyContent: "space-evenly"
+        justifyContent: "space-between",
+        bottom: 25
     },
     title: {
+        top:-5,
         fontSize: 20,
         fontWeight: "bold",
         fontFamily: Fonts.ProtestRiotRegular
     },
     price: {
-        fontSize: 30
+        fontSize:20,
+        gap:10
     },
     buyNow: {
         color: "white",

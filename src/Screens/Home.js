@@ -5,13 +5,11 @@ import Search from '../Components/Search'
 
 
 
-const Home = ({selectedCategoryState}) => {
+const Home = ({navigation}) => {
 
     return (
         <>
-            <Header title="Menu Grizzly" />
-            
-            <Categories selectedCategoryState={selectedCategoryState}/>
+            <Categories navigation={navigation}/>
         </>
     )
 }
