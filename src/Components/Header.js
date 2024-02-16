@@ -13,7 +13,7 @@ const Header = ({ title, navigation }) => {
                 <Pressable style={styles.goBack} onPress={() => navigation.goBack()}>
                     <Ionicons name="arrow-back-circle-sharp" size={30} color="black" />
                 </Pressable>}
-            <Text style={styles.text}>{title}</Text>
+            <Text style={[styles.text,!isPortrait && styles.landscapeText]}>{title}</Text>
         </View>
     )
 }
@@ -31,12 +31,17 @@ const styles = StyleSheet.create({
         position: "relative"
     },
     landscapeContainer: {
-        height: 50 // Establecer el estilo para modo paisaje
+        height: 50 
     },
     text: {
         fontSize: 30,
         fontFamily: Fonts.ProtestRiotRegular,
         paddingTop: 5
+    },
+    landscapeText:{
+        fontSize:35,
+        color:"white",
+        letterSpacing: 3
     },
     goBack: {
         position: "absolute",
