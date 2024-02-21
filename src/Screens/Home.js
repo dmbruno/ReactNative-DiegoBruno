@@ -1,21 +1,17 @@
-import { StyleSheet, View } from 'react-native'
-import Header from '../Components/Header'
+import { StyleSheet } from 'react-native'
 import Categories from '../Components/Categories'
-import Search from '../Components/Search'
 
 
 
-const Home = ({navigation}) => {
+const Home = ({ navigation }) => {
 
     return (
         <>
-            <Categories navigation={navigation}/>
+            <Categories navigation={navigation} />
         </>
     )
 }
 
 export default Home
 
-const styles = StyleSheet.create({
-    
-})
+const styles = StyleSheet.create({})

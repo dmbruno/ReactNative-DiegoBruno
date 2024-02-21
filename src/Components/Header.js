@@ -11,7 +11,7 @@ const Header = ({ title, navigation }) => {
         <View style={[styles.container, !isPortrait && styles.landscapeContainer]}>
             {navigation.canGoBack() &&
                 <Pressable style={styles.goBack} onPress={() => navigation.goBack()}>
-                    <Ionicons name="arrow-back-circle-sharp" size={30} color="black" />
+                    <Ionicons name="arrow-back-circle-sharp" size={30} color="white" />
                 </Pressable>}
             <Text style={[styles.text,!isPortrait && styles.landscapeText]}>{title}</Text>
         </View>

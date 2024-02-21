@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 
 
 const Orders = () => {
@@ -11,4 +11,3 @@ const Orders = () => {
 
 export default Orders
 
-const styles = StyleSheet.create({})
