@@ -1,4 +1,3 @@
-
 import { useWindowDimensions } from 'react-native';
 import { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
@@ -17,6 +16,8 @@ export default function App() {
   const [fontsLoaded] = useFonts(fontsCollection)
   const { width, height } = useWindowDimensions()
   const [portrait, setPortrait] = useState(true)
+
+  
 
 
   useEffect(() => {
