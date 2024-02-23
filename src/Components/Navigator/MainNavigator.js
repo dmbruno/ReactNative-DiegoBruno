@@ -3,8 +3,8 @@ import ShopStack from "../Navigator/ShopStack"
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import CartStack from "./CartStack";
 import OrderStack from "./OrderStack";
-import { StyleSheet, View, Text } from "react-native";
-import colors, { Colors } from "../../utils/Global/Colors"
+import { StyleSheet } from "react-native";
+import colors from "../../utils/Global/Colors"
 import TabBarIcon from "../TabBarIcon";
 
 const Tab = createBottomTabNavigator();
@@ -17,8 +17,8 @@ const MainNavigator = () => {
                 initialRouteName="ShopStack"
                 screenOptions={{
                     headerShown: false,
-                    tabBarShowLabel:false,
-                    tabBarHideOnKeyboard:true,
+                    tabBarShowLabel: false,
+                    tabBarHideOnKeyboard: true,
                     tabBarStyle: styles.tabBar,
                 }}
             >
@@ -26,23 +26,24 @@ const MainNavigator = () => {
                     name="ShopStack"
                     component={ShopStack}
                     options={{
-                        tabBarIcon: ({focused}) => <TabBarIcon title="Productos" nameIcon="home" focused={focused} />
-                    }}
-                />
-                <Tab.Screen
-                    name="CartStack"
-                    component={CartStack}
-                    options={{
-                        tabBarIcon: ({focused}) => <TabBarIcon title="Carrito" nameIcon="shopping-cart" focused={focused} />
+                        tabBarIcon: ({ focused }) => <TabBarIcon title="Categorias" nameIcon="menu" focused={focused} />
                     }}
                 />
                 <Tab.Screen
                     name="OrderStack"
                     component={OrderStack}
                     options={{
-                        tabBarIcon: ({focused}) => <TabBarIcon title="Mi Pedido" nameIcon="list" focused={focused} />
+                        tabBarIcon: ({ focused }) => <TabBarIcon title="Ordenes" nameIcon="text-document-inverted" focused={focused} />
                     }}
                 />
+                    <Tab.Screen
+                        name="CartStack"
+                        component={CartStack}
+                        options={{
+                            tabBarIcon: ({ focused }) => <TabBarIcon title="Carrito" nameIcon="shopping-cart" focused={focused} />
+                        }}
+                    />
+
             </Tab.Navigator>
         </NavigationContainer>
     )

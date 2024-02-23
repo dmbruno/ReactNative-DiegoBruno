@@ -6,7 +6,8 @@ import colors from './src/utils/Global/Colors';
 import { useFonts } from "expo-font"
 import { fontsCollection } from './src/utils/Global/fonts';
 import MainNavigator from './src/Components/Navigator/MainNavigator';
-
+import { store } from './src/app/store'
+import { Provider } from 'react-redux'
 
 
 
@@ -32,7 +33,9 @@ export default function App() {
   return (
     <>
       <StatusBar backgroundColor={colors.green2} />
-      <MainNavigator/>
+      <Provider store={store}>
+        <MainNavigator />
+      </Provider>
     </>
   );
 }

@@ -2,6 +2,7 @@ import { StyleSheet, Text, Image, Pressable } from 'react-native'
 import colors from '../utils/Global/Colors'
 
 
+
 const ProductCategory = ({ item, navigation }) => {
     return (
         <Pressable onPress={() => navigation.navigate("ProductDetail", { productId: item.id })} style={styles.container}>
@@ -10,6 +11,9 @@ const ProductCategory = ({ item, navigation }) => {
         </Pressable>
     )
 }
+
+
+
 
 export default ProductCategory
 

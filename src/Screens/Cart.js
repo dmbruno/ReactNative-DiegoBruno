@@ -1,22 +1,29 @@
 import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native'
-import cart from "../utils/data/cart.json"
 import Fonts from '../utils/Global/fonts'
 import colors from '../utils/Global/Colors'
 import CartItem from '../Components/CartItem'
+import { useSelector } from 'react-redux'
+
+
 
 const Cart = () => {
+
+    const carrito = useSelector((state)=>state.carrito)
+    const { items, total } = carrito
+
+
     return (
-        <View styles={styles.container}>
+        <View style={styles.container}>
             <FlatList
-                data={cart.item}
-                keyExtractor={(item) => item.id}
+                data={items}
+                keyExtractor={(item) => item.id.toString()}
                 renderItem={({item}) => <CartItem item={item}/>}
             />
             <View style={styles.confirmContainer}>
                 <Pressable>
                     <Text style={styles.confirmText}>Confirmar</Text>
                 </Pressable>
-                <Text style={styles.confirmText}>Total: $ {cart.total}</Text>
+                <Text style={styles.confirmText}>Total: $ {total}</Text>
             </View>
 
         </View>
@@ -33,14 +40,16 @@ const styles = StyleSheet.create({
     },
     confirmContainer:{
         flexDirection:"row",
-        backgroundColor:"gay",
+        backgroundColor:colors.green2,
         padding:25,
-        justifyContent:"space-between"
+        justifyContent:"space-between",
+        bottom:130
+        
     },
     confirmText:{
         fontFamily: Fonts.ProtestRiotRegular,
         fontSize:18,
-        color:colors.green3
+        color:"white"
     }
 
 })

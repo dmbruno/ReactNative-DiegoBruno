@@ -3,12 +3,15 @@ import products from "../utils/data/products.json"
 import { useEffect, useState } from 'react';
 import colors from "../utils/Global/Colors"
 import Fonts from '../utils/Global/fonts';
+import { addCartItem } from '../features/Carrito/carritoSlice';
+import { useDispatch } from 'react-redux';
 
 
 
 const ProductDetail = ({ portrait, route }) => {
-    const {productId} = route.params
 
+    const dispatch = useDispatch()
+    const {productId} = route.params
     const [product, setProduct] = useState({})
 
 
@@ -34,8 +37,8 @@ const ProductDetail = ({ portrait, route }) => {
                     </View>
                     <View style={[styles.containerText2,!portrait&&{width:"60%"}]}>
                         <Text style={styles.price}>$ {product.price}</Text>
-                        <Pressable>
-                            <Text style={styles.buyNow}>Buy Now</Text>
+                        <Pressable onPress={()=> dispatch(addCartItem(product)) }>
+                            <Text style={styles.buyNow}>Comprar</Text>
                         </Pressable>
                     </View>
                 </View>
