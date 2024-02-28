@@ -1,96 +1,99 @@
-import { StyleSheet, Text, View, Image, Pressable } from 'react-native'
-import products from "../utils/data/products.json"
+import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
+import products from "../utils/data/products.json";
 import { useEffect, useState } from 'react';
-import colors from "../utils/Global/Colors"
+import colors from "../utils/Global/Colors";
 import Fonts from '../utils/Global/fonts';
 import { addCartItem } from '../features/Carrito/carritoSlice';
 import { useDispatch } from 'react-redux';
 
-
-
 const ProductDetail = ({ portrait, route }) => {
-
-    const dispatch = useDispatch()
-    const {productId} = route.params
-    const [product, setProduct] = useState({})
-
+    const dispatch = useDispatch();
+    const { productId } = route.params;
+    const [product, setProduct] = useState({});
 
     useEffect(() => {
-        const productFinded = products.find(product => product.id === productId)
-        setProduct(productFinded)
-
-    }, [productId])
+        const productFinded = products.find(product => product.id === productId);
+        setProduct(productFinded);
+    }, [productId]);
 
     return (
-        <View style={styles.container}>
-            
-            <View style={[styles.content, !portrait && { flexDirection: "row", gap:10 }]}>
+        <View style={[styles.container, !portrait ? styles.landscapeContainer : null]}>
+            <View style={[styles.imageContainer, !portrait ? styles.landscapeImageContainer : null]}>
                 <Image
-                    style={[styles.image, !portrait && { height: 180, width: "50%" }]}
+                    style={[styles.image, !portrait ? styles.landscapeImage : null]}
                     source={{ uri: product.thumbnail }}
                     resizeMode="cover"
                 />
-                <View>
-                    <View style={[styles.containerText,!portrait && {width:"60%"}]}>
-                        <Text style={styles.title}>{product.title}</Text>
-                        <Text>{product.description}</Text>
-                    </View>
-                    <View style={[styles.containerText2,!portrait&&{width:"60%"}]}>
-                        <Text style={styles.price}>$ {product.price}</Text>
-                        <Pressable onPress={()=> dispatch(addCartItem(product)) }>
-                            <Text style={styles.buyNow}>Comprar</Text>
-                        </Pressable>
-                    </View>
+            </View>
+            <View style={[styles.textContainer, !portrait ? styles.landscapeTextContainer : null]}>
+                <Text style={styles.title}>{product.title}</Text>
+                <Text>{product.description}</Text>
+                <View style={styles.priceContainer}>
+                    <Text style={styles.price}>$ {product.price}</Text>
+                    <Pressable onPress={() => dispatch(addCartItem(product))}>
+                        <Text style={styles.buyNow}>Comprar</Text>
+                    </Pressable>
                 </View>
             </View>
         </View>
-    )
-}
+    );
+};
 
-export default ProductDetail
+export default ProductDetail;
 
 const styles = StyleSheet.create({
-
-    content: {
-        width: "100%",
-
+    container: {
+        flexDirection: "column",
+    },
+    landscapeContainer: {
+        flexDirection: "row",
+        gap: 10,
+    },
+    imageContainer: {
+        flex: 1,
+    },
+    landscapeImageContainer: {
+        flex: 1,
+        width: "50%",
     },
     image: {
         width: "100%",
         height: "100%",
-        
-        
-
     },
-    containerText: {
-        gap:5,
-        paddingHorizontal: 5,
+    landscapeImage: {
+        height: 180,
+    },
+    textContainer: {
+        flex: 1,
+        paddingHorizontal: 10,
         paddingVertical: 25,
-        bottom:15
-    },
-    containerText2: {
-        gap:20,
-        flexDirection: "row",
         justifyContent: "space-between",
-        bottom: 25
+    },
+    landscapeTextContainer: {
+        width: "50%",
+    },
+    priceContainer: {
+        gap:15,
+        flexDirection: "column",
+        justifyContent: "space-between",
     },
     title: {
-        top:-5,
+        padding:10,
         fontSize: 20,
         fontWeight: "bold",
-        fontFamily: Fonts.ProtestRiotRegular
+        fontFamily: Fonts.ProtestRiotRegular,
     },
     price: {
-        fontSize:20,
-        gap:10
+
+        marginTop:10,
+        fontSize: 20,
     },
     buyNow: {
+        textAlign:"center",
         color: "white",
         backgroundColor: colors.green1,
         paddingVertical: 5,
         paddingHorizontal: 15,
-        fontFamily: Fonts.ProtestRiotRegular
-
-    }
-
-})
+        fontFamily: Fonts.ProtestRiotRegular,
+    },
+});
