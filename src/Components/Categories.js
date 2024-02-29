@@ -1,8 +1,11 @@
 import { StyleSheet, View, FlatList } from 'react-native'
-import categories from "../utils/data/categories.json"
 import CardCategory from './CardCategory'
+import { useGetCategoriesQuery } from '../app/services/shop'
 
 const Categories = ({navigation}) => {
+    
+    const {data:categories} = useGetCategoriesQuery()
+
     return (
         <View>
             <FlatList

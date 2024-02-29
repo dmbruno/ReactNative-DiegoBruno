@@ -6,7 +6,7 @@ import colors from '../utils/Global/Colors'
 const ProductCategory = ({ item, navigation }) => {
     return (
         <Pressable onPress={() => navigation.navigate("ProductDetail", { productId: item.id })} style={styles.container}>
-            <Image style={styles.image} source={{uri:item.thumbnail}} resizeMode='stretch' onError={(error) => console.error('Error cargando la imagen:', error)} />
+            <Image style={styles.image} source={{uri:item.thumbnail}} resizeMode='stretch'  />
             <Text style={styles.text}>{item.title}</Text>
         </Pressable>
     )

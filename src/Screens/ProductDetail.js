@@ -1,20 +1,16 @@
-import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
-import products from "../utils/data/products.json";
-import { useEffect, useState } from 'react';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import colors from "../utils/Global/Colors";
 import Fonts from '../utils/Global/fonts';
-import { addCartItem } from '../features/Carrito/carritoSlice';
-import { useDispatch } from 'react-redux';
+import Contador from '../Components/Contador';
+import { useGetProductQuery } from '../app/services/shop';
 
 const ProductDetail = ({ portrait, route }) => {
-    const dispatch = useDispatch();
+    
     const { productId } = route.params;
-    const [product, setProduct] = useState({});
+    const {data:product, isLoading} = useGetProductQuery(productId)
+    
+    if(isLoading) return <View><Text>cargando...</Text></View>
 
-    useEffect(() => {
-        const productFinded = products.find(product => product.id === productId);
-        setProduct(productFinded);
-    }, [productId]);
 
     return (
         <View style={[styles.container, !portrait ? styles.landscapeContainer : null]}>
@@ -30,9 +26,7 @@ const ProductDetail = ({ portrait, route }) => {
                 <Text>{product.description}</Text>
                 <View style={styles.priceContainer}>
                     <Text style={styles.price}>$ {product.price}</Text>
-                    <Pressable onPress={() => dispatch(addCartItem(product))}>
-                        <Text style={styles.buyNow}>Comprar</Text>
-                    </Pressable>
+                    <Contador product={product}/>
                 </View>
             </View>
         </View>
@@ -44,6 +38,7 @@ export default ProductDetail;
 const styles = StyleSheet.create({
     container: {
         flexDirection: "column",
+        
     },
     landscapeContainer: {
         flexDirection: "row",
@@ -53,7 +48,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     landscapeImageContainer: {
-        flex: 1,
+        
         width: "50%",
     },
     image: {
@@ -84,9 +79,8 @@ const styles = StyleSheet.create({
         fontFamily: Fonts.ProtestRiotRegular,
     },
     price: {
-
         marginTop:10,
-        fontSize: 20,
+        fontSize: 25,
     },
     buyNow: {
         textAlign:"center",
