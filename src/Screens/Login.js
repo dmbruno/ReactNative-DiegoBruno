@@ -4,15 +4,20 @@ import colors from '../utils/Global/Colors'
 import Fonts from '../utils/Global/fonts'
 import InputForm from '../Components/InputForm'
 import SubmitButton from '../Components/SubmitButton'
-
+import { useLoginMutation } from '../app/services/auth'
+import { useDispatch } from 'react-redux'
+import { setUser } from '../features/auth/authSlice'
 
 const Login = ({navigation}) => {
 
+    const dispatch = useDispatch()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [triggerLogin] = useLoginMutation() 
 
-    const onSubmit = () =>{
-        console.log(email, password);
+    const onSubmit = async () => {
+        const {data} = await triggerLogin({email,password})
+        dispatch(setUser({email:data.email, idToken:data.idToken}))
     }
 
     return (

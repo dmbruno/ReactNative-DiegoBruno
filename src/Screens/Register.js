@@ -19,8 +19,7 @@ const Register = ({ navigation }) => {
 
 
     const onSubmit = async () => {
-        const {data} = await triggerRegister([email,password])
-        console.log(data);
+        const {data} = await triggerRegister({email,password})
         dispatch(setUser({email:data.email, idToken:data.idToken}))
     }
     
