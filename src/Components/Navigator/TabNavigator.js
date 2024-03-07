@@ -5,6 +5,7 @@ import OrderStack from "./OrderStack";
 import TabBarIcon from "../TabBarIcon";
 import colors from "../../utils/Global/Colors"
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import ProfileStack from './ProfileStack';
 
 
 
@@ -40,6 +41,13 @@ const TabNavigator = () => {
                         component={CartStack}
                         options={{
                             tabBarIcon: ({ focused }) => <TabBarIcon title="Carrito" nameIcon="shopping-cart" focused={focused} />
+                        }}
+                    />
+                    <Tab.Screen
+                        name="ProfileStack"
+                        component={ProfileStack}
+                        options={{
+                            tabBarIcon: ({ focused }) => <TabBarIcon title="Perfil" nameIcon="user" focused={focused} />
                         }}
                     />
 

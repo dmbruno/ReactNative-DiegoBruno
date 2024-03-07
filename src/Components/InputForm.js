@@ -10,6 +10,7 @@ const InputForm = ({label, value, onChangeText, isSecure}) => {
             onChangeText={onChangeText} 
             style={styles.input}
             secureTextEntry={isSecure}
+            
             />
             
         </View>
