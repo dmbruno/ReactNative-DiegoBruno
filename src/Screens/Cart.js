@@ -2,25 +2,40 @@ import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native'
 import Fonts from '../utils/Global/fonts'
 import colors from '../utils/Global/Colors'
 import CartItem from '../Components/CartItem'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { usePostOrderMutation } from '../app/services/orders'
+import { deleteCarrito } from "../features/Carrito/carritoSlice"
 
 
 
-const Cart = () => {
+const Cart = ({navigation}) => {
 
-    const carrito = useSelector((state)=>state.carrito)
+    const dispatch = useDispatch()
+    const carrito = useSelector((state) => state.carrito)
     const { items, total } = carrito
+    const localId = useSelector((state) => state.auth.localId)
+    const [triggerhanddleAddOrder] = usePostOrderMutation(localId)
 
+    const handdleAddOrder = async () => {
+        const createdAt = new Date().toLocaleString()
+        const order = {
+            createdAt,
+            ...carrito
+        }
+        await triggerhanddleAddOrder({ localId, order })
+        dispatch(deleteCarrito())
+        navigation.navigate("OrderStack")
+    }
 
     return (
         <View style={styles.container}>
             <FlatList
                 data={items}
                 keyExtractor={(item) => item.id.toString()}
-                renderItem={({item}) => <CartItem item={item}/>}
+                renderItem={({ item }) => <CartItem item={item} />}
             />
             <View style={styles.confirmContainer}>
-                <Pressable>
+                <Pressable onPress={handdleAddOrder}>
                     <Text style={styles.confirmText}>Confirmar</Text>
                 </Pressable>
                 <Text style={styles.confirmText}>Total: $ {total}</Text>
@@ -34,22 +49,22 @@ export default Cart
 
 const styles = StyleSheet.create({
     container: {
-        flex:1,
-        justifyContent:"space-between",
-        
+        flex: 1,
+        justifyContent: "space-between",
+
     },
-    confirmContainer:{
-        flexDirection:"row",
-        backgroundColor:colors.green2,
-        padding:25,
-        justifyContent:"space-between",
-        bottom:130
-        
+    confirmContainer: {
+        flexDirection: "row",
+        backgroundColor: colors.green2,
+        padding: 25,
+        justifyContent: "space-between",
+        bottom: 130
+
     },
-    confirmText:{
+    confirmText: {
         fontFamily: Fonts.ProtestRiotRegular,
-        fontSize:18,
-        color:"white"
+        fontSize: 18,
+        color: "white"
     }
 
 })

@@ -3,6 +3,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Header from '../../Components/Header'
 import Profile from '../../Screens/Profile'
 import ImageSelector from '../ImageSelector'
+import LocationSelector from '../../Screens/LocationSelector'
+
 
 
 const Stack = createNativeStackNavigator()
@@ -23,6 +25,7 @@ const ProfileStack = () => {
         >
             <Stack.Screen name="Profile" component={Profile} />
             <Stack.Screen name="ImageSelector" component={ImageSelector} />
+            <Stack.Screen name="LocationSelector" component={LocationSelector} />
         </Stack.Navigator>
     )
 }
