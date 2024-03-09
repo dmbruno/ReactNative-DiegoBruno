@@ -1,10 +1,12 @@
-import { StyleSheet, Text, View } from 'react-native'
-import {Feather} from "@expo/vector-icons"
+import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Feather } from "@expo/vector-icons"
 import Fonts from '../utils/Global/fonts'
 import colors from '../utils/Global/Colors'
 
 
-const OrderItem = ({ order }) => {
+const OrderItem = ({ order, onDelete }) => {
+
+    
 
     return (
         <View style={styles.card}>
@@ -14,7 +16,9 @@ const OrderItem = ({ order }) => {
                 </Text>
                 <Text style={styles.text2}>$ {order.total}</Text>
             </View>
-            <Feather name="search" size={30} color="black" />
+            <Pressable>
+                <Feather name="trash" size={30} color="black" />
+            </Pressable>
         </View>
     )
 }
@@ -23,7 +27,7 @@ export default OrderItem
 
 const styles = StyleSheet.create({
     card: {
-        backgroundColor: colors.lightGray ,
+        backgroundColor: colors.lightGray,
         borderWidth: 2,
         margin: 10,
         padding: 10,

@@ -83,25 +83,27 @@ const styles = StyleSheet.create({
     },
     container: {
         width: "90%",
-        backgroundColor: colors.green1,
+        backgroundColor: colors.NegroFondo,
         gap: 15,
         borderRadius: 10,
         justifyContent: "center",
         alignItems: "center",
-        paddingVertical: 20
+        paddingVertical: 20,
+        marginBottom:300
     },
     title: {
         fontSize: 22,
         fontFamily: Fonts.ProtestRiotRegular
     },
     sub: {
-        fontSize: 14,
-        fontFamily: Fonts.JosefinSansBold
+        fontSize: 16,
+        fontFamily: Fonts.ProtestRiotRegular,
+        color:"white"
     },
     subLink: {
-        fontSize: 14,
+        fontSize: 20,
         fontFamily: Fonts.JosefinSansBold,
-        color: "blue"
+        color: colors.Letras
     },
     
 })

@@ -22,7 +22,7 @@ export default Header;
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: colors.green2,
+        backgroundColor: "#222831",
         height: 100,
         paddingTop: Platform.OS === "android" ? statusbar.currentHeight : 0,
         width: "100%",
@@ -36,7 +36,8 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 30,
         fontFamily: Fonts.ProtestRiotRegular,
-        paddingTop: 5
+        paddingTop: 20,
+        color:colors.Letras
     },
     landscapeText:{
         fontSize:35,

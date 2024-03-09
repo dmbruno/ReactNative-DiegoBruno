@@ -62,6 +62,7 @@ const Register = ({ navigation }) => {
                     onChangeText={(e) => setEmail(e)}
                     isSecure={false}
                     error={errorEmail}
+                    
                 />
                 <InputForm
                     label="Password"
@@ -90,6 +91,7 @@ const Register = ({ navigation }) => {
 export default Register
 
 const styles = StyleSheet.create({
+    
     main: {
         flex: 1,
         justifyContent: "center",
@@ -97,24 +99,22 @@ const styles = StyleSheet.create({
     },
     container: {
         width: "90%",
-        backgroundColor: colors.green1,
+        backgroundColor: colors.NegroFondo,
         gap: 15,
         borderRadius: 10,
         justifyContent: "center",
         alignItems: "center",
-        paddingVertical: 20
-    },
-    title: {
-        fontSize: 22,
-        fontFamily: Fonts.ProtestRiotRegular
+        paddingVertical: 20,
+        marginBottom:300
     },
     sub: {
-        fontSize: 14,
-        fontFamily: Fonts.JosefinSansBold
+        color:"white",
+        fontSize: 16,
+        fontFamily: Fonts.ProtestRiotRegular
     },
     subLink: {
-        fontSize: 14,
+        fontSize: 20,
         fontFamily: Fonts.JosefinSansBold,
-        color: "blue"
+        color: colors.Letras
     }
 })

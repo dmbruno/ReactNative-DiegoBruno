@@ -3,11 +3,16 @@ import OrderItem from '../Components/OrderItem'
 import { useSelector } from 'react-redux'
 import { useGetOrdersQuery } from '../app/services/orders'
 
+
 const Orders = () => {
 
     const localId = useSelector((state) => state.auth.localId)
     const { data: orders } = useGetOrdersQuery(localId)
+
     
+    if(!orders){
+        return null
+    }
 
     return (
         <FlatList
