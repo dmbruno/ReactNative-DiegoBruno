@@ -8,6 +8,7 @@ import { useLoginMutation } from '../app/services/auth'
 import { useDispatch } from 'react-redux'
 import { setUser } from '../features/auth/authSlice'
 import { loginSchema } from '../utils/validations/auhtSchema'
+import { insertSession, deleteSession} from '../utils/db'
 
 const Login = ({ navigation }) => {
 
@@ -15,16 +16,17 @@ const Login = ({ navigation }) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [triggerLogin] = useLoginMutation()
-
     const [errorEmail, setErrorEmail] = useState("")
     const [errorPassword, setErrorPassword] = useState("")
 
     const onSubmit = async () => {
-
         try {
             loginSchema.validateSync({ email, password })
             const { data } = await triggerLogin({ email, password })
+            deleteSession()
+            insertSession(data)
             dispatch(setUser({ email: data.email, idToken: data.idToken, localId: data.localId }))
+            
         } catch (error) {
 
             setErrorEmail("")

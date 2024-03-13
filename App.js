@@ -7,11 +7,14 @@ import { fontsCollection } from './src/utils/Global/fonts';
 import MainNavigator from './src/Components/Navigator/MainNavigator';
 import { store } from './src/app/store'
 import { Provider } from 'react-redux'
+import {init} from "./src/utils/db"
 
-
+init()
 
 
 export default function App() {
+
+  
 
   const [fontsLoaded] = useFonts(fontsCollection)
   const { width, height } = useWindowDimensions()
