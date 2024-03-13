@@ -3,22 +3,16 @@ import AddButton from '../Components/AddButton'
 import { useSelector } from 'react-redux'
 import { useGetImageQuery, useGetUserLocationQuery } from '../app/services/Profile'
 import Fonts from '../utils/Global/fonts'
-import { useState, useEffect } from 'react'
+
 
 
 const Profile = ({ navigation }) => {
 
     const localId = useSelector((state) => state.auth.localId)
-    const {data:locationFormatted} = useGetUserLocationQuery(localId)
-    
-    const { data } = useGetImageQuery(localId)
-    const [address, setAddress] = useState('');
+    const { data: locationFormatted } = useGetUserLocationQuery(localId)
 
-    useEffect(() => {
-        if (locationFormatted) {
-            setAddress(locationFormatted.address);
-        }
-    }, [locationFormatted]);
+    const { data } = useGetImageQuery(localId)
+
 
     return (
         <View style={styles.container}>
@@ -27,7 +21,7 @@ const Profile = ({ navigation }) => {
                 style={styles.image}
                 resizeMode='cover'
             />
-            <Text style={styles.text}>{address}</Text>
+            <Text style={styles.text}>{locationFormatted?.address}</Text>
             <AddButton title={"Agregar Imagen de perfil"} onPress={() => navigation.navigate("ImageSelector")} />
             <AddButton title={"Agregar Direccion"} onPress={() => navigation.navigate("LocationSelector")} />
         </View>
