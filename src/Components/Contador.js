@@ -30,12 +30,14 @@ const Contador = ({ product }) => {
                     title="+"
                     onPress={handleSuma}
                     style={styles.button}
+                    color="#F6C90E"
                 />
                 <Text style={styles.counterText}>{contador}</Text>
                 <Button
                     title="-"
                     onPress={handleResta}
                     style={styles.button}
+                    color="#F6C90E"
                 />
             </View>
             <Pressable onPress={() => handleComprar(product)}>
@@ -52,33 +54,34 @@ export default Contador;
 const styles = StyleSheet.create({
     contador: {
         flexDirection: "row",
-        width: "100%",
+        width: "50%",
         justifyContent: "space-between",
-        alignItems: "center"
+        alignItems: "center",
     },
     container: {
         flexDirection: 'column',
         justifyContent: 'space-between',
         alignItems: 'center',
-        
         paddingHorizontal: 25,
     },
     button: {
-        backgroundColor: '#007BFF',
-        color: 'white',
         paddingHorizontal: 20,
-        justifyContent: "center"
+        justifyContent: "center",
+        fontWeight:"bold"
+
     },
     counterText: {
         fontSize: 18,
         fontWeight: 'bold',
+        color:colors.Letras
     },
     buyNow: {
         top: 15,
-        backgroundColor: colors.green2,
-        paddingHorizontal: 30,
+        color:colors.Letras,
+        backgroundColor: colors.NegroFondo,
+        paddingHorizontal: 40,
         paddingVertical: 10,
-        borderRadius: 5,
+        
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -87,6 +90,9 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         elevation: 5,
-        fontWeight:"bold"
+        fontWeight:"bold",
+        borderWidth: 3,
+        borderColor: "#F6C90E",
+        
     }
 });

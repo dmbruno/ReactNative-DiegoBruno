@@ -20,6 +20,7 @@ const TabNavigator = () => {
                     tabBarShowLabel: false,
                     tabBarHideOnKeyboard: true,
                     tabBarStyle: styles.tabBar,
+                    
                 }}
             >
                 <Tab.Screen
@@ -50,7 +51,6 @@ const TabNavigator = () => {
                             tabBarIcon: ({ focused }) => <TabBarIcon title="Perfil" nameIcon="user" focused={focused} />
                         }}
                     />
-
             </Tab.Navigator>
     )
 }
@@ -75,6 +75,8 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.23,
         shadowRadius: 2.62,
+        borderWidth:3,
+        borderColor:colors.Letras
 
 
     }

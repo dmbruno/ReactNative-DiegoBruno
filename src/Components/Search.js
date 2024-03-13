@@ -40,10 +40,10 @@ const Search = ({ handleKeyWord }) => {
                     style={styles.input}
                 />
                 <Pressable onPress={search}>
-                    <EvilIcons name="search" size={34} color="black" />
+                    <EvilIcons name="search" size={34} color="#F6C90E" />
                 </Pressable>
                 <Pressable onPress={resetSearch}>
-                    <AntDesign name="closecircle" size={26} color="black" />
+                    <AntDesign name="closecircle" size={26} color="#F6C90E" />
                 </Pressable>
             </View>
             {error ? <Text style={styles.error}>{error}</Text> : null}
@@ -55,7 +55,7 @@ export default Search
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: colors.green2,
+        backgroundColor: colors.headeryfooter,
         flexDirection: "row",
         padding: 10,
         alignItems: "center"
@@ -63,6 +63,7 @@ const styles = StyleSheet.create({
     input: {
         padding: 10,
         flex: 1,
+        borderColor: "#F6C90E",
         borderRadius: 5,
         paddingHorizontal: 10,
         paddingVertical: 5,

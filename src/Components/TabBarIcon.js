@@ -18,7 +18,8 @@ const styles = StyleSheet.create({
     container:{
         alignItems:"center",
         marginLeft:7,
-        top:15
+        top:15,
+        
     },
     text:{
         color:colors.Letras,
@@ -26,6 +27,6 @@ const styles = StyleSheet.create({
     },
     textFocused:{
         color:colors.lightGray,
-        fontWeight:"bold"
+        
     }
 })

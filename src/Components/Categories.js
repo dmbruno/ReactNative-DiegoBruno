@@ -1,13 +1,14 @@
 import { StyleSheet, View, FlatList } from 'react-native'
 import CardCategory from './CardCategory'
 import { useGetCategoriesQuery } from '../app/services/shop'
+import colors from '../utils/Global/Colors'
 
 const Categories = ({navigation}) => {
     
     const {data:categories} = useGetCategoriesQuery()
 
     return (
-        <View>
+        <View style={styles.container}>
             <FlatList
                 data={categories}
                 keyExtractor={item => item}
@@ -19,4 +20,8 @@ const Categories = ({navigation}) => {
 
 export default Categories
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    container:{
+        backgroundColor:colors.headeryfooter
+    }
+})

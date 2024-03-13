@@ -21,16 +21,15 @@ export default CardCategory
 const styles = StyleSheet.create({
     container: {
         width: "80%",
-        backgroundColor: colors.NegroFondo,
+        backgroundColor: colors.headeryfooter,
         marginHorizontal: "10%",
         marginVertical: 10,
-        padding: 20,
+        padding:20,
         alignItems: "center",
-        borderRadius: 5,
 
     },
     text: {
-        fontSize: 22,
+        fontSize: 25,
         fontFamily: Fonts.ProtestRiotRegular,
         color:colors.Letras
 

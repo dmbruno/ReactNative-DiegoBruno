@@ -4,29 +4,29 @@ import Fonts from '../utils/Global/fonts';
 import Contador from '../Components/Contador';
 import { useGetProductQuery } from '../app/services/shop';
 
-const ProductDetail = ({ portrait, route }) => {
-    
+const ProductDetail = ({ route }) => {
+
     const { productId } = route.params;
-    const {data:product, isLoading} = useGetProductQuery(productId)
-    
-    if(isLoading) return <View><Text>cargando...</Text></View>
+    const { data: product, isLoading } = useGetProductQuery(productId)
+
+    if (isLoading) return <View><Text>cargando...</Text></View>
 
 
     return (
-        <View style={[styles.container, !portrait ? styles.landscapeContainer : null]}>
-            <View style={[styles.imageContainer, !portrait ? styles.landscapeImageContainer : null]}>
+        <View style={styles.container}>
+            <View style={styles.imageContainer}>
                 <Image
-                    style={[styles.image, !portrait ? styles.landscapeImage : null]}
+                    style={styles.image}
                     source={{ uri: product.thumbnail }}
                     resizeMode="cover"
                 />
             </View>
-            <View style={[styles.textContainer, !portrait ? styles.landscapeTextContainer : null]}>
+            <View style={styles.textContainer}>
                 <Text style={styles.title}>{product.title}</Text>
-                <Text>{product.description}</Text>
+                <Text style={styles.description}>{product.description}</Text>
                 <View style={styles.priceContainer}>
                     <Text style={styles.price}>$ {product.price}</Text>
-                    <Contador product={product}/>
+                    <Contador product={product} />
                 </View>
             </View>
         </View>
@@ -38,56 +38,57 @@ export default ProductDetail;
 const styles = StyleSheet.create({
     container: {
         flexDirection: "column",
-        
-    },
-    landscapeContainer: {
-        flexDirection: "row",
-        gap: 10,
+        flex: 1,
+        backgroundColor: colors.headeryfooter,
+        paddingBottom:60
     },
     imageContainer: {
-        flex: 1,
-    },
-    landscapeImageContainer: {
-        
-        width: "50%",
+        flex: 0.5,
     },
     image: {
         width: "100%",
         height: "100%",
     },
-    landscapeImage: {
-        height: 180,
-    },
     textContainer: {
-        flex: 1,
+        flex: 0.5,
         paddingHorizontal: 10,
         paddingVertical: 25,
         justifyContent: "space-between",
-    },
-    landscapeTextContainer: {
-        width: "50%",
+        alignItems: "center"
     },
     priceContainer: {
-        gap:15,
         flexDirection: "column",
         justifyContent: "space-between",
+        alignItems: "center",
+        marginBottom: 200
     },
     title: {
-        padding:10,
-        fontSize: 20,
+        fontSize: 35,
+        color: colors.Letras,
         fontWeight: "bold",
         fontFamily: Fonts.ProtestRiotRegular,
     },
     price: {
-        marginTop:10,
+        color: colors.Letras,
         fontSize: 25,
+        fontWeight: "bold",
+        marginBottom: 1,
+        padding: 10
     },
     buyNow: {
-        textAlign:"center",
+        textAlign: "center",
         color: "white",
         backgroundColor: colors.green1,
         paddingVertical: 5,
         paddingHorizontal: 15,
         fontFamily: Fonts.ProtestRiotRegular,
     },
+    description: {
+        fontSize: 18,
+        textAlign: "center",
+        fontStyle: "italic",
+        color: "white",
+        margin: 5
+
+    }
 });

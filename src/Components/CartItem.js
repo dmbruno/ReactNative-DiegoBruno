@@ -29,11 +29,12 @@ export default CartItem
 
 const styles = StyleSheet.create({
     card: {
-        backgroundColor: colors.green3,
+        marginTop:20,
         padding: 20,
-        margin: 10,
+        margin: 15,
         borderWidth: 2,
         borderRadius: 10,
+        borderColor:colors.Letras,
         flexDirection: "row",
         justifyContent: "space-between",
         height: 100,

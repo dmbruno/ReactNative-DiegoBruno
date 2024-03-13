@@ -51,20 +51,24 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: "space-between",
+        backgroundColor:colors.headeryfooter
 
     },
     confirmContainer: {
         flexDirection: "row",
-        backgroundColor: colors.green2,
+        borderWidth: 2,
+        borderRadius: 10,
+        borderColor:colors.Letras,
         padding: 25,
         justifyContent: "space-between",
-        bottom: 130
+        bottom: 130,
+        marginHorizontal:10
 
     },
     confirmText: {
         fontFamily: Fonts.ProtestRiotRegular,
-        fontSize: 18,
-        color: "white"
+        fontSize: 22,
+        color:colors.Letras
     }
 
 })

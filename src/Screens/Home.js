@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native'
 import Categories from '../Components/Categories'
+import { View } from 'react-native-web'
 
 
 
