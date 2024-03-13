@@ -7,6 +7,7 @@ import { useGetProductQuery } from '../app/services/shop';
 const ProductDetail = ({ route }) => {
 
     const { productId } = route.params;
+    console.log("ide del producto", productId);
     const { data: product, isLoading } = useGetProductQuery(productId)
 
     if (isLoading) return <View><Text>cargando...</Text></View>

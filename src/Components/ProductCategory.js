@@ -5,7 +5,7 @@ import colors from '../utils/Global/Colors'
 
 const ProductCategory = ({ item, navigation }) => {
     return (
-        <Pressable onPress={() => navigation.navigate("ProductDetail", { productId: item.id })} style={styles.container}>
+        <Pressable onPress={() => navigation.navigate("ProductDetail", { productId: item.id -1 })} style={styles.container}>
             <Image style={styles.image} source={{ uri: item.thumbnail }} resizeMode='stretch' />
             <Text style={styles.text}>{item.title}</Text>
         </Pressable>
