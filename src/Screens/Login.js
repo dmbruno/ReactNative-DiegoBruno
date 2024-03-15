@@ -8,7 +8,8 @@ import { useLoginMutation } from '../app/services/auth'
 import { useDispatch } from 'react-redux'
 import { setUser } from '../features/auth/authSlice'
 import { loginSchema } from '../utils/validations/auhtSchema'
-import { insertSession, deleteSession} from '../utils/db'
+import { insertSession, deleteSession } from '../utils/db'
+import ModalMessage from '../Components/ModalMessage'
 
 const Login = ({ navigation }) => {
 
@@ -18,21 +19,30 @@ const Login = ({ navigation }) => {
     const [triggerLogin] = useLoginMutation()
     const [errorEmail, setErrorEmail] = useState("")
     const [errorPassword, setErrorPassword] = useState("")
+    const [modalVisible, setModalVisible] = useState(false)
+
+    const handleCloseModal = () =>{
+        setModalVisible(false)
+    }
 
     const onSubmit = async () => {
         try {
             loginSchema.validateSync({ email, password })
-            const { data } = await triggerLogin({ email, password })
+            const { data, error } = await triggerLogin({ email, password })
+
+            if (error) {
+                setModalVisible(true)
+            }
             deleteSession()
             insertSession(data)
             dispatch(setUser({ email: data.email, idToken: data.idToken, localId: data.localId }))
-            
+
         } catch (error) {
 
             setErrorEmail("")
             setErrorPassword("")
 
-            switch(error.path){
+            switch (error.path) {
                 case "email":
                     console.log(error.message);
                     setErrorEmail(error.message)
@@ -49,29 +59,35 @@ const Login = ({ navigation }) => {
     }
 
     return (
-        <View style={styles.main}>
-            <View style={styles.container}>
-                <InputForm
-                    label="Email"
-                    value={email}
-                    onChangeText={(e) => setEmail(e)}
-                    isSecure={false}
-                    error={errorEmail}
-                />
-                <InputForm
-                    label="Password"
-                    value={password}
-                    onChangeText={(e) => setPassword(e)}
-                    isSecure={true}
-                    error={errorPassword}
-                />
-                <SubmitButton onPress={onSubmit} title="Iniciar Sesion" />
-                <Text style={styles.sub}>No tenes una cuenta?</Text>
-                <Pressable onPress={() => navigation.navigate("Register")}>
-                    <Text style={styles.subLink}>Registro</Text>
-                </Pressable>
+        <>
+            <View style={styles.main}>
+                <View style={styles.container}>
+                    <InputForm
+                        label="Email"
+                        value={email}
+                        onChangeText={(e) => setEmail(e)}
+                        isSecure={false}
+                        error={errorEmail}
+                    />
+                    <InputForm
+                        label="Password"
+                        value={password}
+                        onChangeText={(e) => setPassword(e)}
+                        isSecure={true}
+                        error={errorPassword}
+                    />
+                    <SubmitButton onPress={onSubmit} title="Iniciar Sesion" />
+                    <Text style={styles.sub}>No tenes una cuenta?</Text>
+                    <Pressable onPress={() => navigation.navigate("Register")}>
+                        <Text style={styles.subLink}>Registro</Text>
+                    </Pressable>
+                </View>
             </View>
-        </View>
+            <ModalMessage textButton="Volver"
+                text="Email o Contraseña Invalido"
+                modalVisible={modalVisible}
+                onclose={handleCloseModal} />
+        </>
     )
 }
 
@@ -91,7 +107,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         paddingVertical: 20,
-        marginBottom:300
+        marginBottom: 300
     },
     title: {
         fontSize: 22,
@@ -100,12 +116,12 @@ const styles = StyleSheet.create({
     sub: {
         fontSize: 16,
         fontFamily: Fonts.ProtestRiotRegular,
-        color:"white"
+        color: "white"
     },
     subLink: {
         fontSize: 20,
         fontFamily: Fonts.JosefinSansBold,
         color: colors.Letras
     },
-    
+
 })

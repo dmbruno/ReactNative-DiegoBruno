@@ -3,14 +3,18 @@ import colors from "../utils/Global/Colors";
 import Fonts from '../utils/Global/fonts';
 import Contador from '../Components/Contador';
 import { useGetProductQuery } from '../app/services/shop';
+import LoadingSpinner from '../Components/LoadingSpinner';
+import Error from '../Components/Error';
+import EmptyListComponent from '../Components/EmptyListComponent';
 
-const ProductDetail = ({ route }) => {
+const ProductDetail = ({ route, navigation }) => {
 
     const { productId } = route.params;
-    console.log("ide del producto", productId);
-    const { data: product, isLoading } = useGetProductQuery(productId)
+    const { data: product, isLoading, isSuccess, isError } = useGetProductQuery(productId)
 
-    if (isLoading) return <View><Text>cargando...</Text></View>
+    if (isLoading) return <LoadingSpinner/>
+    if(isError) return <Error message="Algo salio mal, volve a intentar" textButton="Volver" onRetry={()=>navigation.goBack()}/>
+    if(isSuccess && product === null ) return <EmptyListComponent message="Sin productos..."/>
 
 
     return (

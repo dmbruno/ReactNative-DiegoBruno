@@ -3,6 +3,7 @@ import AddButton from '../Components/AddButton'
 import { useSelector } from 'react-redux'
 import { useGetImageQuery, useGetUserLocationQuery } from '../app/services/Profile'
 import Fonts from '../utils/Global/fonts'
+import colors from '../utils/Global/Colors'
 
 
 
@@ -34,17 +35,19 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: "center",
-        marginTop: 20
+        backgroundColor:colors.headeryfooter
     },
     image: {
         width: 200,
         height: 200,
+        borderRadius:5
 
     },
     text: {
         fontFamily: Fonts.JosefinSansBold,
         fontSize: 20,
-        marginVertical: 15,
-        fontWeight: "bold"
+        marginVertical: 20,
+        fontWeight: "bold",
+        color:colors.Letras
     }
 })

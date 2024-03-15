@@ -9,6 +9,7 @@ import { setUser } from '../features/auth/authSlice'
 import { useDispatch } from 'react-redux'
 import { registerSchema } from '../utils/validations/auhtSchema'
 import { deleteSession, insertSession } from '../utils/db'
+import ModalMessage from '../Components/ModalMessage'
 
 
 const Register = ({ navigation }) => {
@@ -22,17 +23,27 @@ const Register = ({ navigation }) => {
     const [errorEmail, setErrorEmail] = useState("")
     const [errorPassword, setErrorPassword] = useState("")
     const [errorConfirmPass, setErrorConfirmPass] = useState("")
+    const [modalVisible, setModalVisible] = useState(false)
 
+    const handleCloseModal = () => {
+        setModalVisible(false)
+    }
 
     const onSubmit = async () => {
         try {
             registerSchema.validateSync({ email, password, confirmPass })
-            const { data } = await triggerRegister({ email, password })
+            const { data, error } = await triggerRegister({ email, password })
+
+            if (error) {
+                setModalVisible(true)
+            }
+
+
             deleteSession()
             insertSession(data)
 
             dispatch(setUser({ email: data.email, idToken: data.idToken, localId: data.localId }))
-            
+
         } catch (error) {
             setErrorEmail("")
             setErrorPassword("")
@@ -40,14 +51,14 @@ const Register = ({ navigation }) => {
             switch (error.path) {
                 case "email":
                     setErrorEmail(error.message)
-                    console.log(error.message);
+                    
                     break;
                 case "password":
-                    console.log(error.message);
+                    
                     setErrorPassword(error.message)
                     break;
                 case "confirmPass":
-                    console.log(error.message);
+                    
                     setErrorConfirmPass(error.message)
                     break
                 default:
@@ -59,44 +70,50 @@ const Register = ({ navigation }) => {
 
 
     return (
-        <View style={styles.main}>
-            <View style={styles.container}>
-                <InputForm
-                    label="Email"
-                    value={email}
-                    onChangeText={(e) => setEmail(e)}
-                    isSecure={false}
-                    error={errorEmail}
-                    
-                />
-                <InputForm
-                    label="Password"
-                    value={password}
-                    onChangeText={(e) => setPassword(e)}
-                    isSecure={true}
-                    error={errorPassword}
-                />
-                <InputForm
-                    label="Confirm Password"
-                    value={confirmPass}
-                    onChangeText={(e) => setConfirmPass(e)}
-                    isSecure={true}
-                    error={errorConfirmPass}
-                />
-                <SubmitButton onPress={onSubmit} title="Registrarme" />
-                <Text style={styles.sub}>Ya tienes una cuenta?</Text>
-                <Pressable onPress={() => navigation.navigate("Login")}>
-                    <Text style={styles.subLink}>Inciar Sesion</Text>
-                </Pressable>
+        <>
+            <View style={styles.main}>
+                <View style={styles.container}>
+                    <InputForm
+                        label="Email"
+                        value={email}
+                        onChangeText={(e) => setEmail(e)}
+                        isSecure={false}
+                        error={errorEmail}
+
+                    />
+                    <InputForm
+                        label="Password"
+                        value={password}
+                        onChangeText={(e) => setPassword(e)}
+                        isSecure={true}
+                        error={errorPassword}
+                    />
+                    <InputForm
+                        label="Confirm Password"
+                        value={confirmPass}
+                        onChangeText={(e) => setConfirmPass(e)}
+                        isSecure={true}
+                        error={errorConfirmPass}
+                    />
+                    <SubmitButton onPress={onSubmit} title="Registrarme" />
+                    <Text style={styles.sub}>Ya tienes una cuenta?</Text>
+                    <Pressable onPress={() => navigation.navigate("Login")}>
+                        <Text style={styles.subLink}>Inciar Sesion</Text>
+                    </Pressable>
+                </View>
             </View>
-        </View>
+            <ModalMessage textButton="Volver"
+                text="¡Verifica los datos ingresados!"
+                modalVisible={modalVisible}
+                onclose={handleCloseModal} />
+        </>
     )
 }
 
 export default Register
 
 const styles = StyleSheet.create({
-    
+
     main: {
         flex: 1,
         justifyContent: "center",
@@ -110,10 +127,10 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         paddingVertical: 20,
-        marginBottom:300
+        marginBottom: 300
     },
     sub: {
-        color:"white",
+        color: "white",
         fontSize: 16,
         fontFamily: Fonts.ProtestRiotRegular
     },

@@ -6,6 +6,7 @@ import MapPreview from '../Components/MapPreview'
 import Fonts from '../utils/Global/fonts'
 import * as Location from "expo-location"
 import { usePutUserLocationMutation } from '../app/services/Profile'
+import colors from '../utils/Global/Colors'
 
 
 
@@ -72,14 +73,17 @@ export default LocationSelector
 
 const styles = StyleSheet.create({
     container: {
+        flex:1,
+        backgroundColor:colors.headeryfooter,
         alignItems: "center",
-        marginTop: 40,
-        gap: 20
+        gap: 20,
+    
     },
     text: {
         fontFamily: Fonts.JosefinSansBold,
         fontSize: 20,
         marginVertical: 15,
-        fontWeight: "bold"
+        fontWeight: "bold",
+        color:colors.Letras
     }
 })

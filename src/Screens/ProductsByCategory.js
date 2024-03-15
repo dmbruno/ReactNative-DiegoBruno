@@ -1,22 +1,22 @@
-import { FlatList, View, StyleSheet } from 'react-native'
+import { FlatList, View, StyleSheet, Text } from 'react-native'
 import { useGetProductsByCategoryQuery } from '../app/services/shop'
 import { useEffect, useState } from 'react'
 import ProductCategory from '../Components/ProductCategory'
 import Search from '../Components/Search'
 import colors from '../utils/Global/Colors'
+import LoadingSpinner from '../Components/LoadingSpinner'
+import Error from '../Components/Error'
+import EmptyListComponent from '../Components/EmptyListComponent'
 
 
 const ProductsByCategory = ({ navigation, route }) => {
 
+
+
   const { categorySelected } = route.params
-  const { data: products, isLoading } = useGetProductsByCategoryQuery(categorySelected)
+  const { data: products, isLoading, isError, isSuccess } = useGetProductsByCategoryQuery(categorySelected)
   const [productsFiltered, setProductsFiltered] = useState([])
   const [keyword, setKeyword] = useState("")
-
-
-  const handleKeyWord = (k) => {
-    setKeyword(k)
-  }
 
   useEffect(() => {
     setProductsFiltered(products)
@@ -27,9 +27,20 @@ const ProductsByCategory = ({ navigation, route }) => {
     }))
   }, [categorySelected, keyword, products])
 
-  return (
-    <>
+  if (isLoading) return <LoadingSpinner />
+  if (isError) return <Error message="Algo salio mal, volve a intentar" textButton="Volver" onRetry={() => navigation.goBack()} />
+  if (isSuccess && products.length === 0) return <EmptyListComponent message="Sin productos de esta categoria" />
 
+  const handleKeyWord = (k) => {
+    setKeyword(k)
+  }
+
+
+
+
+  return (
+
+    <>
       <Search handleKeyWord={handleKeyWord} />
       <View style={styles.container}>
         <FlatList
@@ -38,7 +49,6 @@ const ProductsByCategory = ({ navigation, route }) => {
           renderItem={({ item }) => <ProductCategory item={item} navigation={navigation} />}
         />
       </View>
-
     </>
   )
 }
@@ -46,8 +56,8 @@ const ProductsByCategory = ({ navigation, route }) => {
 export default ProductsByCategory
 
 const styles = StyleSheet.create({
-  container:{
-    flex:1,
-    backgroundColor:colors.headeryfooter
+  container: {
+    flex: 1,
+    backgroundColor: colors.headeryfooter
   }
 })

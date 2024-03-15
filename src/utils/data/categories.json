@@ -1,15 +1,39 @@
+
 [
-    "pizzas",
-    "tablas",
-    "parapicar",
-    "burguers",
-    "ensaladas",
-    "postres",
-    "clasicos y ricos",
-    "wines",
-    "mocktails",
-    "champagneEspumantes"
+    {
+        "title": "Pizzas",
+        "thumbnail": "https://images.unsplash.com/photo-1474600056930-615c3d706456?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cGl6emElMjBtdXp6YXJlbGElMjB5JTIwcnVjdWxhfGVufDB8fDB8fHww"
+    },
+    {
+        "title": "Tablas",
+        "thumbnail": "https://media.istockphoto.com/id/1409747624/es/foto/tabla-de-cortar-con-jam%C3%B3n-salami-queso-palitos-de-pan-y-aceitunas.webp?s=2048x2048&w=is&k=20&c=KnNDMjVQNXyYXquY83HOe6OFN6CP8iS4Xt9tXzUhlvo="
+    },
+    {
+        "title": "Para Picar",
+        "thumbnail": "https://plus.unsplash.com/premium_photo-1679816176733-e9b260edc969?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bmFjaG9zfGVufDB8fDB8fHww"
+    },
+    {
+        "title": "Burguers",
+        "thumbnail":"https://images.unsplash.com/photo-1428660386617-8d277e7deaf2?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+        "title": "Ensaladas",
+        "thumbnail":"https://images.unsplash.com/photo-1622637103261-ae624e188bd0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZW5zYWxhZGFzJTIwY29uJTIwYWNlaXR1bmFzJTIwbmVncmFzfGVufDB8fDB8fHww"
+    },
+    {
+        "title": "Postres",
+        "thumbnail":"https://images.unsplash.com/photo-1684456156705-5014341fc700?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+        "title": "Wines",
+        "thumbnail":"https://media.istockphoto.com/id/1339990551/es/foto/verter-vino-tinto-en-la-copa.webp?s=2048x2048&w=is&k=20&c=77NAW3_XHbPtuCLxsdpJzIaAn4GU-UGjgzh0LJP-oWU="
+    },
+    {
+        "title": "Mocktails",
+        "thumbnail":"https://images.unsplash.com/photo-1607622750671-6cd9a99eabd1?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+        "title": "Champagne",
+        "thumbnail":"https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    }
 ]
-
-
-

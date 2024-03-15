@@ -12,6 +12,8 @@ const ProductCategory = ({ item, navigation }) => {
     )
 }
 
+    
+
 
 export default ProductCategory
 

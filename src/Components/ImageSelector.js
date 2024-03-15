@@ -4,6 +4,7 @@ import * as ImagePicker from 'expo-image-picker'
 import { useGetImageQuery, usePutImageMutation } from '../app/services/Profile'
 import { useSelector } from 'react-redux'
 import AddButton from '../Components/AddButton'
+import colors from '../utils/Global/Colors'
 
 
 const ImageSelector = ({ navigation }) => {
@@ -61,10 +62,13 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: "center",
-        marginTop: 20
+        backgroundColor:colors.headeryfooter,
+        paddingtop:15
     },
     image: {
         width: 200,
-        height: 200
+        height: 200,
+        borderRadius:5
     }
 })
+
