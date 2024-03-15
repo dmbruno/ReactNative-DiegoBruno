@@ -15,8 +15,8 @@ const CartItem = ({ item }) => {
             <View style={styles.container}>
                 <Text style={styles.text1}>{item.brand}</Text>
                 <Text style={styles.text}>{item.title}</Text>
-                <Text style={styles.text2}>{item.price}</Text>
-                <Text style={styles.text2}>{item.quantity}</Text>
+                <Text style={styles.text2}>Total: ${item.price}</Text>
+                <Text style={styles.text2}>Cantidad: {item.quantity}</Text>
             </View>
             <Pressable onPress={()=> dispatch(deleteCartItem(item.id))}>
                 <Entypo name="trash" size={30} color="white" />
@@ -29,19 +29,21 @@ export default CartItem
 
 const styles = StyleSheet.create({
     card: {
-        marginTop:20,
-        padding: 20,
-        margin: 15,
+        marginVertical:5,
+        marginHorizontal:10,
         borderWidth: 2,
         borderRadius: 10,
         borderColor:colors.Letras,
         flexDirection: "row",
-        justifyContent: "space-between",
+        justifyContent: "space-evenly",
         height: 100,
         alignItems: "center"
     },
     container: {
         width: "70%",
+        height:"100%",
+        gap:5,
+        marginBottom:10
 
     },
     text: {

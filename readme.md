@@ -9,8 +9,8 @@ Una aplicación de comercio electrónico desarrollada con React Native que ofrec
 - **Acceso seguro:** Solo los usuarios autenticados pueden acceder a la pantalla de perfil y realizar compras.
 - **Información del usuario:** Muestra detalles del usuario, como nombre y dirección.
 
-<img src="" width="300" >
-<img src="" width="300" >
+<img src="./Screenshots/inicioSesion.jfif" width="300" >
+<img src="./Screenshots/registro.jfif" width="300" >
 
 ### Autenticación con Firebase
 
@@ -34,54 +34,57 @@ Una aplicación de comercio electrónico desarrollada con React Native que ofrec
 - Muestra el precio y el stock disponible.
 - Permite agregar el producto al carrito.
 
-<img src="" width="300" >
-<img src="" width="300" >
-<img src="" width="300" >
+<img src="./Screenshots/detalleDeProducto.jfif" width="300" >
+<img src="./Screenshots/carrito.jfif" width="300" >
+
 
 ### Navegación Inferior
 
 ```javascript
-        const TabNavigator = () => {
-  return (
+     const TabNavigator = () => {
+    return (
         <Tab.Navigator
-          screenOptions={{
-            headerShown:false,
-            tabBarShowLabel:false,
-            tabBarStyle: styles.tabBar
-
-          }}
-        >
-          <Tab.Screen
-             name="ShopStack"
-             component={ShopStack}
-             options={{
-              tabBarIcon:({focused}) => <TabIcon icon="shop" label="Productos" focused={focused}/>
-             }}
-          />
-          <Tab.Screen 
-              name="CartStack" 
-              component={CartStack}
-              options={{
-                tabBarIcon:({focused}) =>  <TabIcon icon="shopping-cart" label="Carrito" focused={focused}/> 
-              }}
-             />
-             <Tab.Screen 
-              name="OrdersStack" 
-              component={OrdersStack}
-              options={{
-                tabBarIcon:({focused}) => <TabIcon icon="list" label="Ordenes" focused={focused}/> 
-              }}
-             />
-            <Tab.Screen 
-              name="ProfileStack" 
-              component={ProfileStack}
-              options={{
-                tabBarIcon:({focused}) => <TabIcon icon="user" label="Perfil" focused={focused}/> 
-              }}
-             />
-      </Tab.Navigator>
-  )
+                initialRouteName="ShopStack"
+                screenOptions={{
+                    headerShown: false,
+                    tabBarShowLabel: false,
+                    tabBarHideOnKeyboard: true,
+                    tabBarStyle: styles.tabBar,
+                    
+                }}
+            >
+                <Tab.Screen
+                    name="ShopStack"
+                    component={ShopStack}
+                    options={{
+                        tabBarIcon: ({ focused }) => <TabBarIcon title="Categorias" nameIcon="menu" focused={focused} />
+                    }}
+                />
+                <Tab.Screen
+                    name="OrderStack"
+                    component={OrderStack}
+                    options={{
+                        tabBarIcon: ({ focused }) => <TabBarIcon title="Ordenes" nameIcon="text-document-inverted" focused={focused} />
+                    }}
+                />
+                    <Tab.Screen
+                        name="CartStack"
+                        component={CartStack}
+                        options={{
+                            tabBarIcon: ({ focused }) => <TabBarIcon title="Carrito" nameIcon="shopping-cart" focused={focused} />
+                        }}
+                    />
+                    <Tab.Screen
+                        name="ProfileStack"
+                        component={ProfileStack}
+                        options={{
+                            tabBarIcon: ({ focused }) => <TabBarIcon title="Perfil" nameIcon="user" focused={focused} />
+                        }}
+                    />
+            </Tab.Navigator>
+    )
 }
+
 
 ```
 
@@ -90,8 +93,10 @@ Una aplicación de comercio electrónico desarrollada con React Native que ofrec
 - **Pestaña 3 - Órdenes:** Historial de órdenes realizadas.
 - **Pestaña 4 - Perfil:** Información del usuario, ubicación y carga de imagen de perfil.
 
-<img src="" width="300" >
-<img src="" width="300" >
+<img src="./Screenshots/Categorias.jfif" width="300" >
+<img src="./Screenshots/carrito.jfif" width="300" >
+<img src="./Screenshots/ordenes.jfif" width="300" >
+<img src="./Screenshots/perfil.jfif" width="300" >
 
 ## Tecnologías Utilizadas
 
@@ -105,7 +110,7 @@ Una aplicación de comercio electrónico desarrollada con React Native que ofrec
 
 ## Instalación
 
-1. Clona el repositorio: `mi github`
+1. Clona el repositorio: `mi github https://github.com/dmbruno`
 2. Instala las dependencias: `npm install`
 3. Configura las claves de API para servicios externos (Expo-Location, Firebase, etc.).
 4. Configura las credenciales de Firebase en tu proyecto.
