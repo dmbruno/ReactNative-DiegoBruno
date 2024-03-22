@@ -18,7 +18,7 @@ const Orders = () => {
     }
 
     return (
-        <View styles={styles.container}>
+        <View style={styles.container}>
             <FlatList
                 data={orders}
                 keyExtractor={(item) => item.id}
@@ -32,7 +32,8 @@ export default Orders
 
 const styles = StyleSheet.create({
     container:{
-        backgroundColor: colors.headeryfooter
+        backgroundColor: colors.headeryfooter,
+        flex:1
         
     }
 })

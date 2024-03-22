@@ -2,10 +2,19 @@ import { Pressable, StyleSheet, Text, View } from 'react-native'
 import { Feather } from "@expo/vector-icons"
 import Fonts from '../utils/Global/fonts'
 import colors from '../utils/Global/Colors'
+import { useDispatch } from 'react-redux'
+import { deleteOrder } from '../features/auth/orderSlice'
 
 
 const OrderItem = ({ order }) => {
     
+    const dispatch = useDispatch()
+
+    const handleTrash = () =>{
+        console.log(order.id);
+        dispatch(deleteOrder(order.id))
+    }
+
 
     return (
         <View style={styles.card}>
@@ -14,7 +23,7 @@ const OrderItem = ({ order }) => {
                 <Text style={styles.text}>{order.createdAt}</Text>
                 <Text style={styles.text2}>$ {order.total}</Text>
             </View>
-            <Pressable>
+            <Pressable onPress={handleTrash}>
                 <Feather name="trash" size={30} color="black" />
             </Pressable>
         </View>
