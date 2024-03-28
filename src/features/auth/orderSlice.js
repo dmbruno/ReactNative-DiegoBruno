@@ -8,7 +8,7 @@ const orderSlice = createSlice({
         deleteOrder: (state, action) => {
             const orderId = action.payload;
             return state.filter(order => order.id !== orderId);
-            console.log(orderId);
+            
         },
     },
 });

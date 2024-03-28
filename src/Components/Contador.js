@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Button, Pressable, ActivityIndicator } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { addCartItem } from '../features/Carrito/carritoSlice';
 import colors from '../utils/Global/Colors';
 
 const Contador = ({ product }) => {
+
+    const [isconfirming, setIsConfirming] = useState(false)
 
     const dispatch = useDispatch()
     const [contador, setContador] = useState(1);
@@ -19,8 +21,13 @@ const Contador = ({ product }) => {
     };
 
     const handleComprar = (product) => {
-        dispatch(addCartItem({ ...product, quantity: contador}))
-        setContador(1)
+        setIsConfirming(true)
+
+        setTimeout(() => {
+            dispatch(addCartItem({ ...product, quantity: contador }));
+            setContador(1);
+            setIsConfirming(false);
+        }, 300); 
     }
 
     return (
@@ -40,11 +47,15 @@ const Contador = ({ product }) => {
                     color="#F6C90E"
                 />
             </View>
-            <Pressable onPress={() => handleComprar(product)}>
-                <Text style={styles.buyNow}>
-                    Confirmar
-                </Text>
-            </Pressable>
+            {isconfirming ?
+                <ActivityIndicator color={colors.Letras} />
+                :
+                <Pressable onPress={() => handleComprar(product)}>
+                    <Text style={styles.buyNow}>
+                        Confirmar
+                    </Text>
+                </Pressable>}
+
         </View>
     );
 };
@@ -67,21 +78,21 @@ const styles = StyleSheet.create({
     button: {
         paddingHorizontal: 20,
         justifyContent: "center",
-        fontWeight:"bold"
+        fontWeight: "bold"
 
     },
     counterText: {
         fontSize: 18,
         fontWeight: 'bold',
-        color:colors.Letras
+        color: colors.Letras
     },
     buyNow: {
         top: 15,
-        color:colors.Letras,
+        color: colors.Letras,
         backgroundColor: colors.NegroFondo,
         paddingHorizontal: 40,
         paddingVertical: 10,
-        
+
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -90,9 +101,9 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         elevation: 5,
-        fontWeight:"bold",
+        fontWeight: "bold",
         borderWidth: 3,
         borderColor: "#F6C90E",
-        
+
     }
 });
