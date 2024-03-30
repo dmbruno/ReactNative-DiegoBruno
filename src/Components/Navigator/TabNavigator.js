@@ -6,12 +6,17 @@ import TabBarIcon from "../TabBarIcon";
 import colors from "../../utils/Global/Colors"
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ProfileStack from './ProfileStack';
+import { useSelector } from 'react-redux';
+import { selectCartItemCount } from '../../features/Carrito/carritoSlice';
 
 
 
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
+
+    const cartItemCount = useSelector(selectCartItemCount);
+    
     return (
         <Tab.Navigator
                 initialRouteName="ShopStack"
@@ -41,7 +46,12 @@ const TabNavigator = () => {
                         name="CartStack"
                         component={CartStack}
                         options={{
-                            tabBarIcon: ({ focused }) => <TabBarIcon title="Carrito" nameIcon="shopping-cart" focused={focused} />
+                            tabBarIcon: ({ focused }) => <TabBarIcon 
+                                                            title="Carrito" 
+                                                            nameIcon="shopping-cart" 
+                                                            focused={focused}
+                                                            badgeValue={cartItemCount}
+                                                            />
                         }}
                     />
                     <Tab.Screen
