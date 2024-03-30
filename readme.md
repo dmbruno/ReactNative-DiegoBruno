@@ -115,3 +115,4 @@ Una aplicación de comercio electrónico desarrollada con React Native que ofrec
 3. Configura las claves de API para servicios externos (Expo-Location, Firebase, etc.).
 4. Configura las credenciales de Firebase en tu proyecto.
 5. Ejecuta la aplicación: `npm start`
+6. Si la queres probar en android, te dejo el link para descargar el APK https://expo.dev/accounts/hongobr/projects/MenuGrizly/builds/b9718493-8301-4f9c-aebb-f114de0a1394
