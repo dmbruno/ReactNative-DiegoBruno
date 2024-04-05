@@ -27,7 +27,7 @@ export const insertSession = ({localId, email, idToken}) => {
                 )
         })
     })
-    return Promise
+    return promesa
 }
 
 export const fetchSession = () => {
@@ -41,7 +41,7 @@ export const fetchSession = () => {
                 )
         })
     })
-    return Promise
+    return promesa
 }
 
 export const deleteSession = () => {
@@ -55,5 +55,5 @@ export const deleteSession = () => {
                 )
         })
     })
-    return Promise
+    return promesa
 }
