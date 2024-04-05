@@ -12,7 +12,7 @@ export const init = () => {
                 )
         })
     })
-    return Promise
+    return promesa
 
 }
 
